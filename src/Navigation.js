@@ -1,13 +1,13 @@
-import React from "react";
+//Navigation.js
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import LoginScreen from "./src/pages/login/LoginScreen.js";
-import SignupScreen from './src/pages/signup/SignupScreen.js';
-
+import LoginScreen from './pages/login/LoginScreen';
+import SignupScreen from './pages/signup/SignupScreen';
 
 const Stack = createStackNavigator();
 
-const App = () => {
+const Navigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
@@ -18,4 +18,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Navigation;

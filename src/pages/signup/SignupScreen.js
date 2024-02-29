@@ -5,7 +5,7 @@ const SignupScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Cadastro</Text>
+        <Text style={styles.headerTitle}>CADASTRO</Text>
       </View>
       <View style={styles.inputContainer}>
         <Text>Nome:</Text>
@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     marginBottom: 20,
+    fontSize: 18,
   },
   input: {
     borderWidth: 1,
@@ -74,6 +75,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: "white",
     textAlign: "center",
+    fontSize: 18
   },
 });
 

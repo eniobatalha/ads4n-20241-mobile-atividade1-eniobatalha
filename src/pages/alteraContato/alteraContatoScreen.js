@@ -49,8 +49,12 @@ const AlteraContatoScreen = ({ navigation, route }) => {
                 </View>
 
                 <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Salvar</Text>
+                    <Text style={styles.buttonText}>Alterar</Text>
                 </TouchableOpacity>
+
+                <TouchableOpacity style={styles.buttonExcluir}>
+                    <Text style={styles.buttonText}>Excluir</Text>
+                 </TouchableOpacity>
 
             </View>
         </View>
@@ -85,6 +89,14 @@ const styles = StyleSheet.create({
       color: "white",
       marginLeft: 5, 
     },
+    buttonExcluir: {
+        backgroundColor: "#C02525",
+        width: "100%",
+        paddingVertical: 15,
+        paddingHorizontal: 20,
+        borderRadius: 5,
+        marginTop: 10,
+      },
     content: {
       flex: 1,
       justifyContent: "center",

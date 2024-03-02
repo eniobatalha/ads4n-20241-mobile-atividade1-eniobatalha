@@ -10,15 +10,18 @@ const LoginScreen = () => {
     navigation.navigate('Signup');
   };
 
+  const handleContatoPress = () => {
+    navigation.navigate('Contatos');
+  };
+
   return (
     <View style={styles.container}>
       <Icon name="user" size={150} color="gray" />
       <View style={styles.inputContainer}>
-        <Text>E-mail:</Text>
+        <Text>Login:</Text>
         <TextInput
           style={styles.input}
-          placeholder="Digite seu email"
-          keyboardType="email-address"
+          placeholder="Digite seu login"
           autoCapitalize="none"
         />
       </View>
@@ -30,10 +33,10 @@ const LoginScreen = () => {
           secureTextEntry={true}
         />
       </View>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Logar</Text>
+      <TouchableOpacity style={styles.buttonLogin} onPress={handleContatoPress}>
+        <Text style={styles.buttonText}>Login</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={handleSignupPress}>
+      <TouchableOpacity style={styles.buttonCadastro} onPress={handleSignupPress} backgroundColor>
         <Text style={styles.buttonText}>Cadastre-se</Text>
       </TouchableOpacity>
     </View>
@@ -61,8 +64,16 @@ const styles = StyleSheet.create({
     marginTop: 5,
     height: 30
   },
-  button: {
-    backgroundColor: "#25C089",
+  buttonLogin: {
+    backgroundColor: "#4882c2",
+    width: "100%",
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+    marginTop: 10,
+  },
+  buttonCadastro: {
+    backgroundColor: "#C02525",
     width: "100%",
     paddingVertical: 15,
     paddingHorizontal: 20,

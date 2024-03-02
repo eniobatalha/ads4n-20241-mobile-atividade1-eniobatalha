@@ -1,39 +1,59 @@
 import React from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
 
-const SignupScreen = () => {
+const SignupScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>CADASTRO</Text>
+      <View style={styles.headerContainer}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.backButton}>
+            <Ionicons name="arrow-back-circle-sharp" size={34} color="white" />
+            <Text style={styles.backButtonText}></Text>
+          </TouchableOpacity>
+          <Text style={styles.headerTitle}>USUÁRIO</Text>
+        </View>
       </View>
-      <View style={styles.inputContainer}>
-        <Text>Nome:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Digite seu nome"
-        />
+      <View style={styles.content}>
+        <View style={styles.inputContainer}>
+          <Text>nome:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Digite seu nome"
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text>cpf:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Digite seu CPF"
+            keyboardType="numeric"
+            maxLength={11}
+          />
+        </View>
+
+        <View style={styles.inputContainer}>
+          <Text>email:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Digite seu email"
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+        </View>
+        <View style={styles.inputContainer}>
+          <Text>senha:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Digite sua senha"
+            secureTextEntry={true}
+          />
+        </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Salvar</Text>
+        </TouchableOpacity>
       </View>
-      <View style={styles.inputContainer}>
-        <Text>Email:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Digite seu email"
-          keyboardType="email-address"
-          autoCapitalize="none"
-        />
-      </View>
-      <View style={styles.inputContainer}>
-        <Text>Senha:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="Digite sua senha"
-          secureTextEntry={true}
-        />
-      </View>
-      <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Cadastrar</Text>
-      </TouchableOpacity>
     </View>
   );
 };
@@ -41,17 +61,35 @@ const SignupScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingHorizontal: 50,
-    justifyContent: "center",
+    paddingHorizontal: 0,
   },
   header: {
-    backgroundColor: "lightgray",
-    paddingVertical: 20,
+    flexDirection: "row",
     alignItems: "center",
-    marginBottom: 20,
+    justifyContent: "space-between",
+    backgroundColor: "#4882c2",
+    paddingVertical: 20,
+    paddingHorizontal: 20,
   },
   headerTitle: {
-    fontSize: 20,
+    fontSize: 30,
+    color: "white",
+    flex: 1,
+    textAlign: "center",
+  },
+  backButton: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
+  backButtonText: {
+    fontSize: 16,
+    color: "white",
+    marginLeft: 5, 
+  },
+  content: {
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 50,
   },
   inputContainer: {
     marginBottom: 20,
@@ -66,7 +104,7 @@ const styles = StyleSheet.create({
     height: 30
   },
   button: {
-    backgroundColor: "#25C089",
+    backgroundColor: "#4882c2",
     paddingVertical: 15,
     paddingHorizontal: 20,
     borderRadius: 5,

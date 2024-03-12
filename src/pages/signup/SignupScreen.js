@@ -1,120 +1,83 @@
-import React from "react";
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, TouchableWithoutFeedback, Keyboard } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
+import axios from 'axios';
+import { styles } from './styles.js';
+import { TextInputMask } from 'react-native-masked-text';
 
 const SignupScreen = ({ navigation }) => {
+  const [nome, setNome] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const handleSignup = async () => {
+    // Depois faço a lógica de cadastro aqui
+  };
+
   return (
-    <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <View style={styles.header}>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.backButton}>
-            <Ionicons name="arrow-back-circle-sharp" size={34} color="white" />
-            <Text style={styles.backButtonText}></Text>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <View style={styles.headerContainer}>
+          <View style={styles.header}>
+            <TouchableOpacity onPress={() => navigation.navigate('Login')} style={styles.backButton}>
+              <Ionicons name="arrow-back-circle-sharp" size={34} color="white" />
+              <Text style={styles.backButtonText}></Text>
+            </TouchableOpacity>
+            <Text style={styles.headerTitle}>USUÁRIO</Text>
+          </View>
+        </View>
+        <View style={styles.content}>
+          <View style={styles.inputContainer}>
+            <Text>Nome:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Digite seu nome"
+              value={nome}
+              onChangeText={setNome}
+            />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text>CPF:</Text>
+            <TextInputMask
+              style={styles.input}
+              placeholder="Digite seu CPF"
+              type={'cpf'}
+              value={cpf}
+              onChangeText={text => setCpf(text)}
+            />
+          </View>
+
+          <View style={styles.inputContainer}>
+            <Text>Email:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Digite seu email"
+              keyboardType="email-address"
+              autoCapitalize="none"
+              value={email}
+              onChangeText={setEmail}
+            />
+          </View>
+          
+          <View style={styles.inputContainer}>
+            <Text>Senha:</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Digite sua senha"
+              secureTextEntry={true}
+              value={senha}
+              onChangeText={setSenha}
+            />
+          </View>
+          <TouchableOpacity style={styles.button} onPress={handleSignup}>
+            <Text style={styles.buttonText}>Salvar</Text>
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>USUÁRIO</Text>
         </View>
       </View>
-      <View style={styles.content}>
-        <View style={styles.inputContainer}>
-          <Text>nome:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu nome"
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Text>cpf:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu CPF"
-            keyboardType="numeric"
-            maxLength={11}
-          />
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Text>email:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite seu email"
-            keyboardType="email-address"
-            autoCapitalize="none"
-          />
-        </View>
-        <View style={styles.inputContainer}>
-          <Text>senha:</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Digite sua senha"
-            secureTextEntry={true}
-          />
-        </View>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Salvar</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingHorizontal: 0,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#4882c2",
-    paddingVertical: 20,
-    paddingHorizontal: 20,
-  },
-  headerTitle: {
-    fontSize: 30,
-    color: "white",
-    flex: 1,
-    textAlign: "center",
-  },
-  backButton: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  backButtonText: {
-    fontSize: 16,
-    color: "white",
-    marginLeft: 5, 
-  },
-  content: {
-    flex: 1,
-    justifyContent: "center",
-    paddingHorizontal: 50,
-  },
-  inputContainer: {
-    marginBottom: 20,
-    fontSize: 18,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: "black",
-    borderRadius: 5,
-    paddingHorizontal: 10,
-    marginTop: 5,
-    height: 30
-  },
-  button: {
-    backgroundColor: "#4882c2",
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 5,
-    marginTop: 10,
-  },
-  buttonText: {
-    color: "white",
-    textAlign: "center",
-    fontSize: 18
-  },
-});
 
 export default SignupScreen;

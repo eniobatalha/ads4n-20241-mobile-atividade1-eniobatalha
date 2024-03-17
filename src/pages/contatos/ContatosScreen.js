@@ -5,6 +5,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { ListItem, Avatar } from 'react-native-elements';
 import axios from 'axios';
 import { styles } from './styles.js';
+import { SimpleLineIcons } from '@expo/vector-icons';
 
 const Contatos = ({ navigation }) => {
     const [contatos, setContatos] = useState([]);
@@ -37,16 +38,25 @@ const Contatos = ({ navigation }) => {
         React.useCallback(() => {
             fetchContatos();
         }, [])
-    );    
+    );
+
+    const handleLogout = () => {
+        navigation.navigate('Login');
+    };
 
     return (
         <View style={styles.container}>
+
             <View style={styles.header}>
+                <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
+                    <SimpleLineIcons name="logout" size={24} color="white" />
+                </TouchableOpacity>
                 <Text style={styles.headerTitle}>LISTA DE CONTATOS</Text>
                 <TouchableOpacity onPress={() => navigation.navigate('NovoContato')} style={styles.addButton}>
                     <FontAwesome5 name="plus-circle" size={34} color="white" />
                 </TouchableOpacity>
             </View>
+
             <ScrollView>
                 {
                     contatos.map((contato, i) => (

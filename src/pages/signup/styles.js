@@ -32,6 +32,7 @@ export const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         paddingHorizontal: 50,
+        paddingVertical: 120,
     },
     inputContainer: {
         marginBottom: 20,
@@ -43,7 +44,8 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         paddingHorizontal: 10,
         marginTop: 5,
-        height: 30
+        height: 40, 
+        width: 300, 
     },
     button: {
         backgroundColor: "#4882c2",
@@ -51,6 +53,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 20,
         borderRadius: 5,
         marginTop: 10,
+        width: 300,
     },
     buttonText: {
         color: "white",

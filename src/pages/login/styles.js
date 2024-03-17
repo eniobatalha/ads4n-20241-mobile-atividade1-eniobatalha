@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
       justifyContent: "center",
       alignItems: "center",
       paddingHorizontal: 50,
+      paddingBottom: 280,
     },
     inputContainer: {
       width: "100%",

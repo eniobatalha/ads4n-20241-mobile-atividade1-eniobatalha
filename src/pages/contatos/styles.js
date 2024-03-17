@@ -23,4 +23,7 @@ export const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
     },
+    logoutButton: {
+        marginRight: 10,
+    },
 });
